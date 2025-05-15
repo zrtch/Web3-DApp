@@ -1,33 +1,36 @@
 .transaction-sender {
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: #fff8ee;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(210, 180, 140, 0.3);
-  border: 1px solid #f3e0c0;
+  max-width: 520px;
+  /* margin: 32px auto; */
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(180, 200, 230, 0.1);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .transaction-sender h2 {
   margin-top: 0;
-  color: #8b5a2b;
+  color: #2563eb;
   text-align: center;
   margin-bottom: 20px;
   font-weight: 600;
 }
 
 .network-info {
-  background-color: #ffecd1;
+  background-color: #f7fafd;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 20px;
   text-align: center;
-  color: #a67c52;
-  box-shadow: 0 1px 5px rgba(210, 180, 140, 0.2);
+  color: #2563eb;
+  box-shadow: 0 1px 5px rgba(180, 200, 230, 0.08);
 }
 
 .network-info span {
-  color: #e67e22;
+  color: #2563eb;
   font-weight: bold;
 }
 
@@ -38,32 +41,32 @@
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  color: #8b5a2b;
+  color: #2563eb;
   font-weight: 500;
 }
 
 .form-group input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #f3e0c0;
-  border-radius: 8px;
-  background-color: #fffaf0;
-  color: #6b5b45;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background-color: #f7fafd;
+  color: #222;
   font-family: monospace;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #e67e22;
-  box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.2);
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
 }
 
 .send-button {
-  background-color: #e67e22;
+  background-color: #2563eb;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: 600;
@@ -71,17 +74,18 @@
   transition: all 0.3s ease;
   width: 100%;
   margin-top: 10px;
-  box-shadow: 0 2px 5px rgba(210, 140, 60, 0.3);
+  box-shadow: 0 2px 5px rgba(180, 200, 230, 0.1);
 }
 
 .send-button:hover:not(:disabled) {
-  background-color: #d35400;
+  background-color: #1d4ed8;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(210, 140, 60, 0.4);
+  box-shadow: 0 4px 8px rgba(180, 200, 230, 0.15);
 }
 
 .send-button:disabled {
-  background-color: #d3b99e;
+  background-color: #e5e7eb;
+  color: #9ca3af;
   cursor: not-allowed;
   opacity: 0.7;
 }

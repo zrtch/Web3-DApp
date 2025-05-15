@@ -93,6 +93,7 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
         </button>
       ) : (
         <div className="wallet-info">
+          <h2>Web3 DApp</h2>
           <p className="account-address">
             {accounts[0]?.substring(0, 6)}...
             {accounts[0]?.substring(accounts[0].length - 4)}

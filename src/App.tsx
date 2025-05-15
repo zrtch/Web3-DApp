@@ -15,7 +15,6 @@ function App() {
   return (
     <div className="app-container">
       <header>
-        <h1>Web3 DApp</h1>
         <WalletConnect onConnect={handleWalletConnect} />
       </header>
 
