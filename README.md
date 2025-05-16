@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# Web3 DApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 项目简介
 
-Currently, two official plugins are available:
+- 钱包连接 ：
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  - 用户可以通过 MetaMask 等主流以太坊钱包连接到应用。
+  - 应用会显示用户的钱包地址和连接状态。
 
-## Expanding the ESLint configuration
+- 区块链信息展示 (由 `BlockchainInfo.tsx` 实现)：
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  - 显示当前连接账户的 ETH 余额。
+  - 显示当前连接的以太坊网络名称（如主网、Sepolia 测试网等）。
+  - 显示最新的区块号。
+  - 显示当前的 Gas 价格。
+  - 这些信息会定期自动刷新。
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- 发送交易 (由 TransactionSender.tsx 实现)：
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+  - 用户可以向指定的以太坊地址发送 ETH。
+  - 提供输入接收方地址和发送金额的表单。
+  - 显示交易状态和交易哈希。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- 智能合约交互 (由 ContractInteraction.tsx 实现)：
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+  - 用户可以输入智能合约的地址和 ABI (应用程序二进制接口)。
+  - 可以调用合约的只读方法 (read functions) 并查看结果。
+
+## 区块链核心概念
+
+区块链是一种去中心化的分布式账本技术，其运作依赖于以下核心概念：
+
+- **去中心化 (Decentralization)**：与传统中心化系统不同，区块链网络不由单个实体控制，而是由分布在全球各地的多个节点共同维护和验证数据。这增强了系统的透明度、安全性和抗审查性。
+- **分布式账本 (Distributed Ledger)**：区块链的账本数据被复制并存储在网络中的所有（或部分）参与节点上。任何交易或数据的变更都需要经过网络共识，确保所有节点的账本保持一致。
+- **区块 (Block)**：区块是区块链的基本组成单元，用于记录一定时间内的交易数据。每个区块包含了一批经过验证的交易信息、前一个区块的哈希值（用于链接形成链条）以及自身的时间戳和哈希值。
+- **交易 (Transaction)**：交易是指在区块链上进行的操作，例如价值转移、智能合约的调用等。每笔交易都会被广播到网络中，并由矿工（或验证者）打包进新的区块中。
+- **哈希 (Hash)**：哈希是一种密码学函数，可以将任意长度的数据转换为固定长度的唯一字符串（哈希值）。区块链广泛使用哈希来确保数据的完整性和不可篡改性。例如，每个区块的哈希值是根据其内容计算得出的，任何对区块内容的微小改动都会导致哈希值的巨大变化。
+- **共识机制 (Consensus Mechanism)**：共识机制是区块链网络中节点就新区块的有效性达成一致的规则和过程。常见的共识机制有工作量证明（Proof of Work, PoW）和权益证明（Proof of Stake, PoS）。它们确保了网络的安全和数据的一致性，防止恶意行为。
+- **智能合约 (Smart Contract)**：智能合约是在区块链上运行的自动化脚本，它们根据预设的规则自动执行合约条款。一旦部署，智能合约的代码和执行结果都是公开透明且不可篡改的，为各种去中心化应用（DApp）提供了基础。
+
+## 技术栈
+
+- **React**：用于构建用户界面的主流前端框架，组件化开发，响应式渲染。
+- **TypeScript**：JavaScript 的超集，提供类型系统和更好的开发体验。
+- **Vite**：新一代前端构建工具，极快的冷启动和热更新，适合现代前端项目。
+- **Web3.js**：与以太坊区块链进行交互的 JavaScript 库，支持账户、合约、交易等操作。
+- **ethers.js**：轻量级以太坊库，提供钱包管理、合约交互、签名等功能，API 简洁易用。
+- **wagmi**：React Hooks 工具库，简化与以太坊钱包和合约的集成，支持多钱包连接。
+- **web3modal**：多钱包连接组件，支持主流钱包如 MetaMask、WalletConnect 等，提升用户体验。
+- **viem**：高性能的以太坊交互库，适合与 wagmi 配合使用。
+
+## 相关知识点
+
+- **组件化开发**：通过 React 组件实现页面和功能的模块化、复用性强。
+- **类型安全**：TypeScript 提供静态类型检查，减少运行时错误。
+- **前端构建与热更新**：Vite 提供极速开发体验，支持模块热替换（HMR）。
+- **区块链交互**：Web3.js/ethers.js/wagmi 负责与以太坊节点通信，实现账户管理、合约调用、链上数据读取等。
+- **钱包连接**：web3modal 提供统一的钱包连接入口，支持多种钱包，提升 DApp 的易用性。
+- **合约调用与事件监听**：通过 ethers.js/wagmi 实现合约方法调用、事件订阅和链上数据监听。
+- **前端与区块链安全**：涉及签名、私钥管理、交易验证等安全知识。
